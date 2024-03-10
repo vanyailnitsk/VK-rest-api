@@ -1,7 +1,17 @@
 package com.example.vkrestapi.client;
 
-import org.springframework.cloud.netflix.feign.FeignClient;
+import com.example.vkrestapi.models.User;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
-@FeignClient
-public class UsersClient {
+import java.util.List;
+
+@FeignClient(url = "https://jsonplaceholder.typicode.com/users/",name="users")
+public interface UsersClient {
+    @GetMapping
+    List<User> getUsers();
+
+    @GetMapping("{userId}")
+    User getUser(@PathVariable Integer userId);
 }
