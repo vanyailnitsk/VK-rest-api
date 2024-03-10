@@ -1,2 +1,10 @@
-package com.example.vkrestapi.service;public class UsersService {
+package com.example.vkrestapi.service;
+
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
+@Service
+@RequiredArgsConstructor
+public class UsersService {
+
 }
