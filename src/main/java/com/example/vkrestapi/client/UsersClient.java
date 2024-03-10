@@ -22,7 +22,7 @@ public interface UsersClient {
     List<Album> getUserAlbums(@PathVariable Integer userId);
 
     @GetMapping("{userId}/todos")
-    List<Todo> getTodos(@PathVariable Integer userId);
+    List<Todo> getUserTodos(@PathVariable Integer userId);
 
     @GetMapping("{userId}/posts")
     List<Post> getUserPosts(@PathVariable Integer userId);
