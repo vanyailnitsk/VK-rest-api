@@ -1,5 +1,8 @@
 package com.example.vkrestapi.client;
 
+import com.example.vkrestapi.models.Album;
+import com.example.vkrestapi.models.Post;
+import com.example.vkrestapi.models.Todo;
 import com.example.vkrestapi.models.User;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,12 +19,12 @@ public interface UsersClient {
     User getUser(@PathVariable Integer userId);
 
     @GetMapping("{userId}/albums")
-    User getUserAlbums(@PathVariable Integer userId);
+    List<Album> getUserAlbums(@PathVariable Integer userId);
 
     @GetMapping("{userId}/todos")
-    User getTodos(@PathVariable Integer userId);
+    List<Todo> getTodos(@PathVariable Integer userId);
 
     @GetMapping("{userId}/posts")
-    User getUserPosts(@PathVariable Integer userId);
+    List<Post> getUserPosts(@PathVariable Integer userId);
 
 }
