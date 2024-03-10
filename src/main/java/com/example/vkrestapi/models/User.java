@@ -4,10 +4,12 @@ package com.example.vkrestapi.models;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @RequiredArgsConstructor
 @Getter
 @Setter
+@ToString
 public class User {
     private int id;
     private String name;

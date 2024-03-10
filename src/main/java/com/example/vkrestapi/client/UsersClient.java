@@ -27,13 +27,13 @@ public interface UsersClient {
     List<Post> getUserPosts(@PathVariable Integer userId);
 
     @PostMapping
-    User createUser(User user);
+    User createUser(@RequestBody User user);
 
     @PutMapping("{userId}")
-    User updateUser(@PathVariable Integer userId, User user);
+    User updateUser(@PathVariable Integer userId, @RequestBody User user);
 
-    @PutMapping("{userId}")
-    User editUser(@PathVariable Integer userId, User user);
+    @PatchMapping("{userId}")
+    User editUser(@PathVariable Integer userId, @RequestBody User user);
 
     @DeleteMapping("{userId}")
     void deleteUser(@PathVariable Integer userId);

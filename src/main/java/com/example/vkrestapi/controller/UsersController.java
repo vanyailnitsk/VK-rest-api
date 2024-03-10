@@ -6,10 +6,7 @@ import com.example.vkrestapi.models.Todo;
 import com.example.vkrestapi.models.User;
 import com.example.vkrestapi.service.UsersService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -42,5 +39,26 @@ public class UsersController {
     @GetMapping("{userId}/posts")
     public List<Post> getUserPosts(@PathVariable Integer userId) {
         return usersService.getUserPosts(userId);
+    }
+
+    @PostMapping
+    public User createUser(@RequestBody User user) {
+        System.out.println(user);
+        return usersService.createUser(user);
+    }
+
+    @PutMapping("{userId}")
+    public User updateUser(@PathVariable Integer userId,@RequestBody  User user) {
+        return usersService.updateUser(userId,user);
+    }
+
+    @PatchMapping("{userId}")
+    public User editUser(@PathVariable Integer userId, @RequestBody User user) {
+        return usersService.editUser(userId,user);
+    }
+
+    @DeleteMapping("{userId}")
+    public void deleteUser(@PathVariable Integer userId) {
+        usersService.deleteUser(userId);
     }
 }
