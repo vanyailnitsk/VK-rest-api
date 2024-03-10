@@ -8,6 +8,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @FeignClient(url = "https://jsonplaceholder.typicode.com/users/",name="users")
 public interface UsersClient {
@@ -33,7 +34,7 @@ public interface UsersClient {
     User updateUser(@PathVariable Integer userId, @RequestBody User user);
 
     @PatchMapping("{userId}")
-    User editUser(@PathVariable Integer userId, @RequestBody User user);
+    User editUser(@PathVariable Integer userId, @RequestBody Map<String, Object> user);
 
     @DeleteMapping("{userId}")
     void deleteUser(@PathVariable Integer userId);

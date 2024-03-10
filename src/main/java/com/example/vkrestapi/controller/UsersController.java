@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/users")
@@ -53,7 +54,7 @@ public class UsersController {
     }
 
     @PatchMapping("{userId}")
-    public User editUser(@PathVariable Integer userId, @RequestBody User user) {
+    public User editUser(@PathVariable Integer userId, @RequestBody Map<String, Object> user) {
         return usersService.editUser(userId,user);
     }
 

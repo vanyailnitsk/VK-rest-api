@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
@@ -43,7 +44,7 @@ public class UsersService {
         return usersClient.updateUser(userId,user);
     }
 
-    public User editUser(Integer userId, User user) {
+    public User editUser(Integer userId, Map<String, Object> user) {
         return usersClient.editUser(userId,user);
     }
 
