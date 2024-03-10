@@ -14,4 +14,14 @@ public interface UsersClient {
 
     @GetMapping("{userId}")
     User getUser(@PathVariable Integer userId);
+
+    @GetMapping("{userId}/albums")
+    User getUserAlbums(@PathVariable Integer userId);
+
+    @GetMapping("{userId}/todos")
+    User getTodos(@PathVariable Integer userId);
+
+    @GetMapping("{userId}/posts")
+    User getUserPosts(@PathVariable Integer userId);
+
 }
