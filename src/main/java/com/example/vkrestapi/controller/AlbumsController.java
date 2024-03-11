@@ -17,7 +17,7 @@ public class AlbumsController {
     private final AlbumsService albumsService;
 
     @GetMapping
-    public List<Album> getAlbums(@SpringQueryMap Map<String,Object> params) {
+    public List<Album> getAlbums(@RequestParam Map<String,Object> params) {
         return albumsService.getAlbums(params);
     }
 
