@@ -19,7 +19,6 @@ public class UsersService {
     private final UsersClient usersClient;
 
     public List<User> getUsers(@SpringQueryMap Map<String,Object> params) {
-        System.out.println(params);
         return usersClient.getUsers(params);
     }
     public User getUser(@PathVariable Integer userId) {
