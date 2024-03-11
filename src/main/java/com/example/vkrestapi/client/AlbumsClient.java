@@ -1,6 +1,5 @@
 package com.example.vkrestapi.client;
 
-import com.example.vkrestapi.models.Comment;
 import com.example.vkrestapi.models.Album;
 import com.example.vkrestapi.models.Photo;
 import org.springframework.cloud.openfeign.FeignClient;
