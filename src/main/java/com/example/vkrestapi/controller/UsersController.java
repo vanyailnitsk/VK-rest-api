@@ -5,7 +5,9 @@ import com.example.vkrestapi.models.Post;
 import com.example.vkrestapi.models.Todo;
 import com.example.vkrestapi.models.User;
 import com.example.vkrestapi.service.UsersService;
+import feign.QueryMap;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cloud.openfeign.SpringQueryMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,8 +20,8 @@ public class UsersController {
     private final UsersService usersService;
 
     @GetMapping
-    public List<User> getUsers() {
-        return usersService.getUsers();
+    public List<User> getUsers(@RequestParam Map<String,Object> params) {
+        return usersService.getUsers(params);
     }
 
     @GetMapping("{userId}")

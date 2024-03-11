@@ -6,6 +6,7 @@ import com.example.vkrestapi.models.Post;
 import com.example.vkrestapi.models.Todo;
 import com.example.vkrestapi.models.User;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cloud.openfeign.SpringQueryMap;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,8 +18,9 @@ import java.util.Map;
 public class UsersService {
     private final UsersClient usersClient;
 
-    public List<User> getUsers() {
-        return usersClient.getUsers();
+    public List<User> getUsers(@SpringQueryMap Map<String,Object> params) {
+        System.out.println(params);
+        return usersClient.getUsers(params);
     }
     public User getUser(@PathVariable Integer userId) {
         return usersClient.getUser(userId);

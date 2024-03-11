@@ -4,7 +4,10 @@ import com.example.vkrestapi.models.Album;
 import com.example.vkrestapi.models.Post;
 import com.example.vkrestapi.models.Todo;
 import com.example.vkrestapi.models.User;
+import feign.Param;
+import feign.QueryMap;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.cloud.openfeign.SpringQueryMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,7 +16,7 @@ import java.util.Map;
 @FeignClient(url = "https://jsonplaceholder.typicode.com/users/",name="users")
 public interface UsersClient {
     @GetMapping
-    List<User> getUsers();
+    List<User> getUsers(@SpringQueryMap Map<String,Object> map);
 
     @GetMapping("{userId}")
     User getUser(@PathVariable Integer userId);
