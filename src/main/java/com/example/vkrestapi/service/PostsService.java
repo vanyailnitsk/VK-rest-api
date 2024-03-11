@@ -16,31 +16,31 @@ import java.util.Map;
 public class PostsService {
     private final PostsClient postsClient;
 
-    List<Post> getPosts(@SpringQueryMap Map<String,Object> params) {
+    public List<Post> getPosts(@SpringQueryMap Map<String,Object> params) {
         return postsClient.getPosts(params);
     }
 
-    Post getPost(@PathVariable Integer postId) {
+    public Post getPost(@PathVariable Integer postId) {
         return postsClient.getPost(postId);
     }
 
-    List<Comment> getPostComments(@PathVariable Integer postId) {
+    public List<Comment> getPostComments(@PathVariable Integer postId) {
         return postsClient.getPostComments(postId);
     }
 
-    Post createPost(@RequestBody Post post) {
+    public Post createPost(@RequestBody Post post) {
         return postsClient.createPost(post);
     }
 
-    Post updatePost(@PathVariable Integer postId, @RequestBody Post post) {
+    public Post updatePost(@PathVariable Integer postId, @RequestBody Post post) {
         return postsClient.updatePost(postId,post);
     }
 
-    Post editPost(@PathVariable Integer postId, @RequestBody Map<String, Object> post) {
+    public Post editPost(@PathVariable Integer postId, @RequestBody Map<String, Object> post) {
         return postsClient.editPost(postId,post);
     }
 
-    void deletePost(@PathVariable Integer postId) {
+    public void deletePost(@PathVariable Integer postId) {
         postsClient.deletePost(postId);
     }
 }

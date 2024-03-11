@@ -11,7 +11,7 @@ import java.util.Map;
 @FeignClient(url = "https://jsonplaceholder.typicode.com/posts/",name="posts")
 public interface PostsClient {
     @GetMapping
-    List<Post> getPosts(@SpringQueryMap Map<String,Object> map);
+    List<Post> getPosts(@SpringQueryMap Map<String,Object> params);
 
     @GetMapping("{postId}")
     Post getPost(@PathVariable Integer postId);
