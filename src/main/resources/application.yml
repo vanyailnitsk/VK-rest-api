@@ -13,7 +13,7 @@ spring:
     url: jdbc:postgresql://localhost:5432/vkrestapi
   cache:
     caffeine:
-      spec: maximumSize=48,expireAfterWrite=10s
+      spec: maximumSize=48,expireAfterWrite=1m
 
 server:
   port: ${port:7070}
