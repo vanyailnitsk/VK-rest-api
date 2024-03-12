@@ -5,9 +5,7 @@ import com.example.vkrestapi.models.Post;
 import com.example.vkrestapi.models.Todo;
 import com.example.vkrestapi.models.User;
 import com.example.vkrestapi.service.UsersService;
-import feign.QueryMap;
 import lombok.RequiredArgsConstructor;
-import org.springframework.cloud.openfeign.SpringQueryMap;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 

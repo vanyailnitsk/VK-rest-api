@@ -11,6 +11,10 @@ spring:
     password: admin
     username: postgres
     url: jdbc:postgresql://localhost:5432/vkrestapi
+  cache:
+    caffeine:
+      spec: maximumSize=48,expireAfterWrite=10s
+
 server:
   port: ${port:7070}
   error:
