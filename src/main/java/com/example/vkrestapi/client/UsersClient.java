@@ -29,9 +29,11 @@ public interface UsersClient {
     List<Album> getUserAlbums(@PathVariable Integer userId);
 
     @GetMapping("{userId}/todos")
+    @Cacheable
     List<Todo> getUserTodos(@PathVariable Integer userId);
 
     @GetMapping("{userId}/posts")
+    @Cacheable
     List<Post> getUserPosts(@PathVariable Integer userId);
 
     @PostMapping

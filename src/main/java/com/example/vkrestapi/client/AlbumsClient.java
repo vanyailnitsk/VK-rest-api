@@ -2,6 +2,8 @@ package com.example.vkrestapi.client;
 
 import com.example.vkrestapi.models.Album;
 import com.example.vkrestapi.models.Photo;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.cloud.openfeign.SpringQueryMap;
 import org.springframework.web.bind.annotation.*;
@@ -10,15 +12,19 @@ import java.util.List;
 import java.util.Map;
 
 @FeignClient(url = "https://jsonplaceholder.typicode.com/albums/",name="albums")
+@CacheConfig(cacheNames={"albums"})
 public interface AlbumsClient {
 
     @GetMapping
+    @Cacheable
     List<Album> getAlbums(@SpringQueryMap Map<String,Object> params);
 
     @GetMapping("{albumId}")
+    @Cacheable
     Album getAlbum(@PathVariable Integer albumId);
 
     @GetMapping("{albumId}/photos")
+    @Cacheable
     List<Photo> getAlbumPhotos(@PathVariable Integer albumId);
 
     @PostMapping
