@@ -14,7 +14,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/posts")
 @RequiredArgsConstructor
-@PreAuthorize("hasRole('ROLE_USERS')")
+@PreAuthorize("hasRole('ROLE_USERS') or hasRole('ROLE_ADMIN')")
 public class PostsController {
     private final PostsService postsService;
 
