@@ -8,6 +8,7 @@ import com.example.vkrestapi.service.UsersService;
 import feign.QueryMap;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cloud.openfeign.SpringQueryMap;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,6 +17,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/users")
 @RequiredArgsConstructor
+@PreAuthorize("hasRole('ROLE_USERS')")
 public class UsersController {
     private final UsersService usersService;
 
