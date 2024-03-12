@@ -5,6 +5,7 @@ import com.example.vkrestapi.models.Post;
 import com.example.vkrestapi.service.PostsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cloud.openfeign.SpringQueryMap;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/posts")
 @RequiredArgsConstructor
+@PreAuthorize("hasRole('ROLE_USERS')")
 public class PostsController {
     private final PostsService postsService;
 
