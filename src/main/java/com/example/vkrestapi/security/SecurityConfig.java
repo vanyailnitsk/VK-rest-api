@@ -11,18 +11,15 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
 import java.util.Arrays;
-import java.util.Set;
 
 @Configuration
 @EnableWebSecurity
@@ -32,28 +29,29 @@ public class SecurityConfig {
 
     @Bean
     public UserDetailsService userDetailsService() {
-        PasswordEncoder passwordEncoder = passwordEncoder();
-        UserDetails postRole = UserDetailsImpl.builder()
-                .username("post")
-                .password(passwordEncoder.encode("post"))
-                .roles(Set.of(Role.ROLE_POSTS))
-                .build();
-        UserDetails albumRole = UserDetailsImpl.builder()
-                .username("album")
-                .password(passwordEncoder.encode("album"))
-                .roles(Set.of(Role.ROLE_ALBUMS))
-                .build();
-        UserDetails userRole = UserDetailsImpl.builder()
-                .username("user")
-                .password(passwordEncoder.encode("user"))
-                .roles(Set.of(Role.ROLE_USERS))
-                .build();
-        UserDetails adminRole = UserDetailsImpl.builder()
-                .username("admin")
-                .password(passwordEncoder.encode("admin"))
-                .roles(Set.of(Role.ROLE_ADMIN))
-                .build();
-        return new InMemoryUserDetailsManager(postRole,albumRole,userRole,adminRole);
+//        PasswordEncoder passwordEncoder = passwordEncoder();
+//        UserDetails postRole = UserDetailsImpl.builder()
+//                .username("post")
+//                .password(passwordEncoder.encode("post"))
+//                .roles(Set.of(Role.ROLE_POSTS))
+//                .build();
+//        UserDetails albumRole = UserDetailsImpl.builder()
+//                .username("album")
+//                .password(passwordEncoder.encode("album"))
+//                .roles(Set.of(Role.ROLE_ALBUMS))
+//                .build();
+//        UserDetails userRole = UserDetailsImpl.builder()
+//                .username("user")
+//                .password(passwordEncoder.encode("user"))
+//                .roles(Set.of(Role.ROLE_USERS))
+//                .build();
+//        UserDetails adminRole = UserDetailsImpl.builder()
+//                .username("admin")
+//                .password(passwordEncoder.encode("admin"))
+//                .roles(Set.of(Role.ROLE_ADMIN))
+//                .build();
+//        return new InMemoryUserDetailsManager(postRole,albumRole,userRole,adminRole);
+        return new UserDetailsServiceImpl();
     }
 
     @Bean
@@ -69,7 +67,7 @@ public class SecurityConfig {
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+        return new BCryptPasswordEncoder(8);
     }
 
     @Bean
