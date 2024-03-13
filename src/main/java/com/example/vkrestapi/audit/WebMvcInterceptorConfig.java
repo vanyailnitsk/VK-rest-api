@@ -9,7 +9,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Component
 @Configuration
 @RequiredArgsConstructor
-public class WebMvcInterceptor implements WebMvcConfigurer {
+public class WebMvcInterceptorConfig implements WebMvcConfigurer {
     private final AuditInterceptor auditInterceptor;
 
     @Override
