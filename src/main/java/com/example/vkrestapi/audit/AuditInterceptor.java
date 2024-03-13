@@ -1,5 +1,6 @@
 package com.example.vkrestapi.audit;
 
+import com.example.vkrestapi.dao.AuditingDAO;
 import com.example.vkrestapi.security.Role;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -8,12 +9,14 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Component
 @Slf4j
@@ -29,6 +32,14 @@ public class AuditInterceptor implements HandlerInterceptor {
         boolean hasAccess = hasAccessToController(authentication.getAuthorities(),uri);
         log.info("Username: {}, Roles: {} ,Has access: {}, Method: {}, URI: {}, Params: {}",
                 username,authentication.getAuthorities(), hasAccess,method, uri, params);
+        AuditingDAO action = AuditingDAO.builder()
+                .username(username)
+                .method(method)
+                .uri(uri)
+                .hasAccess(hasAccess)
+                .userRoles(authentication.getAuthorities().stream().map(Object::toString).collect(Collectors.joining(",")))
+                .params(String.join("&", params))
+                .build();
         return true;
     }
 

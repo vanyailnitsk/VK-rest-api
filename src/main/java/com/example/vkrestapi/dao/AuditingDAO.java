@@ -21,6 +21,6 @@ public class AuditingDAO {
     private String uri;
     private String method;
     private Boolean hasAccess;
-    private String param;
+    private String params;
 
 }
