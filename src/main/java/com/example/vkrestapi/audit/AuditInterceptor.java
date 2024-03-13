@@ -1,9 +1,11 @@
 package com.example.vkrestapi.audit;
 
 import com.example.vkrestapi.dao.AuditingDAO;
+import com.example.vkrestapi.repository.AuditingRepository;
 import com.example.vkrestapi.security.Role;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -20,7 +22,9 @@ import java.util.stream.Collectors;
 
 @Component
 @Slf4j
+@RequiredArgsConstructor
 public class AuditInterceptor implements HandlerInterceptor {
+    private final AuditingRepository auditingRepository;
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -40,6 +44,7 @@ public class AuditInterceptor implements HandlerInterceptor {
                 .userRoles(authentication.getAuthorities().stream().map(Object::toString).collect(Collectors.joining(",")))
                 .params(String.join("&", params))
                 .build();
+        auditingRepository.save(action);
         return true;
     }
 
