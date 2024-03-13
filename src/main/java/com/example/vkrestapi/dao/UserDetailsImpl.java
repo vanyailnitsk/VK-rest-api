@@ -1,10 +1,8 @@
-package com.example.vkrestapi.security;
+package com.example.vkrestapi.dao;
 
+import com.example.vkrestapi.security.Role;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -18,6 +16,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@ToString
 public class UserDetailsImpl implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

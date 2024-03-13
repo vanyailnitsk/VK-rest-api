@@ -28,33 +28,6 @@ import java.util.Arrays;
 public class SecurityConfig {
     private final UserDetailsServiceImpl userDetailsService;
 
-//    @Bean
-//    public UserDetailsService userDetailsService() {
-////        PasswordEncoder passwordEncoder = passwordEncoder();
-////        UserDetails postRole = UserDetailsImpl.builder()
-////                .username("post")
-////                .password(passwordEncoder.encode("post"))
-////                .roles(Set.of(Role.ROLE_POSTS))
-////                .build();
-////        UserDetails albumRole = UserDetailsImpl.builder()
-////                .username("album")
-////                .password(passwordEncoder.encode("album"))
-////                .roles(Set.of(Role.ROLE_ALBUMS))
-////                .build();
-////        UserDetails userRole = UserDetailsImpl.builder()
-////                .username("user")
-////                .password(passwordEncoder.encode("user"))
-////                .roles(Set.of(Role.ROLE_USERS))
-////                .build();
-////        UserDetails adminRole = UserDetailsImpl.builder()
-////                .username("admin")
-////                .password(passwordEncoder.encode("admin"))
-////                .roles(Set.of(Role.ROLE_ADMIN))
-////                .build();
-////        return new InMemoryUserDetailsManager(postRole,albumRole,userRole,adminRole);
-//        return new UserDetailsServiceImpl();
-//    }
-
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.csrf().disable()

@@ -1,6 +1,6 @@
 package com.example.vkrestapi.repository;
 
-import com.example.vkrestapi.security.UserDetailsImpl;
+import com.example.vkrestapi.dao.UserDetailsImpl;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
