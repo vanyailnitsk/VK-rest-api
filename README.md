@@ -51,3 +51,10 @@ public class UserDetailsImpl implements UserDetails {
   @Enumerated(EnumType.STRING)
   private Set<Role> roles = new HashSet<>();
 ```
+## Запуск приложения
+Для запуска приложения необходимо создать базу данных PostgreSQL с названием vkrestapi, указать в application.yml имя пользователя БД и пароль.
+Далее запустить приложение командой
+```bash
+./mvnw spring-boot:run
+```
+Таблицы создаются автоматически
