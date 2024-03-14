@@ -52,9 +52,9 @@ public class UserDetailsImpl implements UserDetails {
   private Set<Role> roles = new HashSet<>();
 ```
 ## Запуск приложения
-Для запуска приложения необходимо создать базу данных PostgreSQL с названием vkrestapi, указать в application.yml имя пользователя БД и пароль.
-Далее запустить приложение командой
+Доступен запуск с помощью docker-compose. Внутри него создается нужная postgres-db и запускается spring-приложение. Для запуска необходимо выполнить команды 
 ```bash
-./mvnw spring-boot:run
+docker-compose build
+docker-compose up -d
 ```
-Таблицы создаются автоматически
+Таблицы создаются автоматически. Запросы доступны на порт 7070
