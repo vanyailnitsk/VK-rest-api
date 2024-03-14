@@ -51,3 +51,10 @@ public class UserDetailsImpl implements UserDetails {
   @Enumerated(EnumType.STRING)
   private Set<Role> roles = new HashSet<>();
 ```
+## Запуск приложения
+Доступен запуск с помощью docker-compose. Внутри него создается нужная postgres-db и запускается spring-приложение. Для запуска необходимо выполнить команды 
+```bash
+docker-compose build
+docker-compose up -d
+```
+Таблицы создаются автоматически. Запросы доступны на порт 7070
