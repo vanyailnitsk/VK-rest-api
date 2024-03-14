@@ -1,0 +1,34 @@
+version: "3.9"
+services:
+  database:
+    container_name: vk_postgres
+    build:
+      context: database
+      dockerfile: Dockerfile
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=admin
+    restart: unless-stopped
+    healthcheck:
+      test: [ 'CMD-SHELL', 'pg_isready -U postgres' ]
+      start_period: 10s
+      interval: 20s
+      timeout: 5s
+      retries: 5
+    ports:
+      - "5433:5432"
+
+  vk-spring:
+    container_name: vk-spring-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      db-url: jdbc:postgresql://database:5432/vkrestapi
+      port: 7070
+    ports:
+      - "7070:7070"
+    depends_on:
+      database:
+        condition: service_healthy
